@@ -57,7 +57,7 @@ export default ({ navigation }) => (
           navigation.navigate("Quiz", {
             title: "Sintomas físicos",
             questions: sintomasfisicos,
-            color: "orange",
+            color: "#FF9C00",
           })
         }
       />

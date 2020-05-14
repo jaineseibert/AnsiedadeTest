@@ -3,6 +3,7 @@ import { View, StyleSheet, StatusBar, Text, SafeAreaView } from "react-native";
 
 import { Button, ButtonContainer } from "../components/Button";
 import sintomaspsicologicos from "../data/sintomaspsicologicos";
+import sintomasfisicos from "../data/sintomasfisicos";
 import AlertExample from "../components/Alert";
 import { ButtonVoltar } from "../components/Button";
 
@@ -48,7 +49,9 @@ class Quiz extends React.Component {
       state => {
         const nextState = { answered: 0 };
 
-        nextState.questao = state.questao + 1;
+        if (state.totalCount > (state.questao + 1)) {
+          nextState.questao = state.questao + 1;
+        }
         nextState.score = state.score + correct;
         nextState.answerCorrect = 0;
         nextState.pesoRespostaAnterior = correct
@@ -69,15 +72,15 @@ class Quiz extends React.Component {
       if (nextIndex >= state.totalCount) {
         if (state.totalCount <= 18) {
           this.props.navigation.navigate("Quiz", {
-            title: "Sintomas psicolgicos",
+            title: "Sintomas psicológicos",
             questions: sintomaspsicologicos,
-            color: "orange",
+            color: "#FF9C00",
           })
           this.state.totalCount = 28,
-            this.state.questao = 1;
-          this.state.activeQuestionIndex = 1;
+            this.state.questao = 0;
+          this.state.activeQuestionIndex = 0;
           return {
-            activeQuestionIndex: 1,
+            activeQuestionIndex: 0,
             answred: 0
           }
         } else {
@@ -98,12 +101,33 @@ class Quiz extends React.Component {
     this.setState(state => {
 
       const nextIndex = state.activeQuestionIndex - 1;
+      state.score = state.score - state.pesoRespostaAnterior;
       state.pesoRespostaAnterior = 0;
 
+      state.questao = state.questao - 1;
+
+      if (nextIndex < 0) {
+        if (state.totalCount == 28) {
+          this.props.navigation.navigate("Quiz", {
+            title: "Sintomas físicos",
+            questions: sintomasfisicos,
+            color: "#FF9C00",
+          })
+          this.state.totalCount = 18,
+            this.state.questao = 17;
+          this.state.activeQuestionIndex = 17;
+          return {
+            activeQuestionIndex: 17,
+            answred: 0
+          }
+        } else {
+          this.props.navigation.navigate("QuizIndex")
+        }
+      } else {
         return {
           activeQuestionIndex: nextIndex,
           answred: 0
-
+        }
       };
     });
   };
@@ -119,7 +143,7 @@ class Quiz extends React.Component {
           styles.container,
           { backgroundColor: this.props.navigation.getParam("colorCorpo") }
         ]}
-      >
+      > 
         <AlertExample />
         <StatusBar barStyle="light-content" />
         <SafeAreaView style={styles.safearea}>
@@ -143,7 +167,7 @@ class Quiz extends React.Component {
             />
           </View>
           <Text style={styles.text}>
-            {`${this.state.questao}/${this.state.totalCount}`}
+            {`${this.state.questao+1}/${this.state.totalCount}`}
           </Text>
         </SafeAreaView>
       </View>

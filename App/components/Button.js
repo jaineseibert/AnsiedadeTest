@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   buttoninicio: {
-    backgroundColor: "orange",
+    backgroundColor: "#FF9C00",
     borderRadius: 10,
     paddingVertical: 15,
     alignItems: "center",
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     marginTop: 20,
     justifyContent: "flex-end",
-    backgroundColor: "orange",
+    backgroundColor: "#FF9C00",
     borderRadius: 100
   }
 });
