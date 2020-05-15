@@ -21,6 +21,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center"
   },
+  textButonFim: {
+    color: "#fff",
+    fontSize: 15,
+    textAlign: "center"
+  },
   buttonContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -35,6 +40,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "46%",
     marginTop: 20
+  },
+  buttonFim: {
+    backgroundColor: "#FF9C00",
+    borderRadius: 10,
+    paddingVertical: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "30%",
+    marginTop: 60
   },
   buttonVoltar: {
     flexDirection: "row",
@@ -59,6 +73,13 @@ export const ButtonContainer = ({ children }) => (
 export const ButtonInicio = ({ text, onPress = () => { } }) => (
   <TouchableOpacity onPress={onPress} style={styles.buttoninicio}>
     <Text style={styles.textButonInicio}>{text}</Text>
+  </TouchableOpacity>
+);
+
+
+export const ButtonFim = ({ text, onPress = () => { } }) => (
+  <TouchableOpacity onPress={onPress} style={styles.buttonFim}>
+    <Text style={styles.textButonFim}>{text}</Text>
   </TouchableOpacity>
 );
 

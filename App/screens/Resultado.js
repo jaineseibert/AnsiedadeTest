@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Dimensions, Image, Text } from "react-native";
+import { ButtonFim } from "../components/Button";
 
 const screen = Dimensions.get("window");
 
@@ -33,7 +34,12 @@ const styles = StyleSheet.create({
         textAlign: "center",
         letterSpacing: -0.02,
         fontWeight: "600"
-    }
+    },
+    ButtonSection: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
 });
 
 class Resultado extends React.Component {
@@ -45,7 +51,7 @@ class Resultado extends React.Component {
     render() {
         const icon = (this.state.score < 30)
             ? require("../assets/check.png")
-            : require("../assets/close.png");
+            : require("../assets/atencao.png");
 
         const circleStyles = [styles.circle];
 
@@ -60,6 +66,15 @@ class Resultado extends React.Component {
                     <Image source={icon} style={styles.icon} resizeMode="contain" />
                 </View>
                 <Text style={styles.frase}>{this.state.mensagem}</Text>
+                <View style={styles.ButtonSection}>
+                <ButtonFim
+                    key='1'
+                    text='Voltar ao início'
+                    onPress={() =>
+                        this.props.navigation.navigate("QuizIndex")
+                    }
+                />
+                </View>
             </View>
         );
     }
