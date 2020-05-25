@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, StatusBar, Text, SafeAreaView } from "react-native";
+import { View, StyleSheet, StatusBar, Text, SafeAreaView, Modal, TouchableHighlight, useState } from "react-native";
 
 import { Button, ButtonContainer } from "../components/Button";
 import sintomaspsicologicos from "../data/sintomaspsicologicos";
@@ -29,9 +29,11 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    
+
   },
 });
+
+
 
 class Quiz extends React.Component {
   state = {
@@ -43,6 +45,7 @@ class Quiz extends React.Component {
     pesoRespostaAnterior: 0,
     answerCorrect: false,
   };
+
 
   answer = correct => {
     this.setState(
@@ -106,6 +109,7 @@ class Quiz extends React.Component {
 
       state.questao = state.questao - 1;
 
+
       if (nextIndex < 0) {
         if (state.totalCount == 28) {
           this.props.navigation.navigate("Quiz", {
@@ -132,18 +136,16 @@ class Quiz extends React.Component {
     });
   };
 
-
   render() {
     const questions = this.props.navigation.getParam("questions", []);
     const question = questions[this.state.activeQuestionIndex];
-
     return (
       <View
         style={[
           styles.container,
           { backgroundColor: this.props.navigation.getParam("colorCorpo") }
         ]}
-      > 
+      >
         <AlertExample />
         <StatusBar barStyle="light-content" />
         <SafeAreaView style={styles.safearea}>
@@ -167,7 +169,7 @@ class Quiz extends React.Component {
             />
           </View>
           <Text style={styles.text}>
-            {`${this.state.questao+1}/${this.state.totalCount}`}
+            {`${this.state.questao + 1}/${this.state.totalCount}`}
           </Text>
         </SafeAreaView>
       </View>
