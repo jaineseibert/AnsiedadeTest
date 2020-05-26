@@ -1,5 +1,7 @@
 import React from "react";
-import { View, StyleSheet, StatusBar, Text, SafeAreaView, Modal, TouchableHighlight, useState } from "react-native";
+import { View, StyleSheet, StatusBar, Text, SafeAreaView, Dimensions, TouchableOpacity } from "react-native";
+
+import Modal from 'react-native-modal';
 
 import { Button, ButtonContainer } from "../components/Button";
 import sintomaspsicologicos from "../data/sintomaspsicologicos";
@@ -44,6 +46,7 @@ class Quiz extends React.Component {
     answered: false,
     pesoRespostaAnterior: 0,
     answerCorrect: false,
+    isModalVisible: false
   };
 
 
@@ -70,8 +73,13 @@ class Quiz extends React.Component {
   nextQuestion = () => {
     this.setState(state => {
 
+
       const nextIndex = state.activeQuestionIndex + 1;
 
+      if (nextIndex == 4) {
+        this.openModal()
+      }
+    
       if (nextIndex >= state.totalCount) {
         if (state.totalCount <= 18) {
           this.props.navigation.navigate("Quiz", {
@@ -94,7 +102,7 @@ class Quiz extends React.Component {
       } else {
         return {
           activeQuestionIndex: nextIndex,
-          answred: 0
+          answred: 0,
         }
       };
     });
@@ -108,7 +116,6 @@ class Quiz extends React.Component {
       state.pesoRespostaAnterior = 0;
 
       state.questao = state.questao - 1;
-
 
       if (nextIndex < 0) {
         if (state.totalCount == 28) {
@@ -136,6 +143,18 @@ class Quiz extends React.Component {
     });
   };
 
+  closeModal = () => {
+    this.setState({
+      isModalVisible: false
+    })
+  }
+
+  openModal = () => {
+    this.setState({
+      isModalVisible: true
+    })
+  }
+
   render() {
     const questions = this.props.navigation.getParam("questions", []);
     const question = questions[this.state.activeQuestionIndex];
@@ -148,6 +167,23 @@ class Quiz extends React.Component {
       >
         <AlertExample />
         <StatusBar barStyle="light-content" />
+        <Modal animationIn="slideInUp" animationOut="slideOutDown" onBackdropPress={() => this.closeModal()}
+          onSwipeComplete={() => this.closeModal()} swipeDirection="right" isVisible={this.state.isModalVisible || false}
+          style={{ backgroundColor: 'white', maxHeight: Dimensions.get('window').height}}>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <Text style={{ textAlign: 'center' }}>This is the modal content for now!</Text>
+          </View>
+          <View style={{ flex: 1, justifyContent: 'center', position: 'absolute', bottom: 0 }}>
+            <View style={{ flexDirection: 'row', }}>
+              <TouchableOpacity style={{ backgroundColor: 'green', width: '50%' }}>
+                <Text style={{ color: 'white', textAlign: 'center', padding: 10 }}>Ok</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{ backgroundColor: 'red', width: '50%' }} onPress={() => this.closeModal()}>
+                <Text style={{ color: 'white', textAlign: 'center', padding: 10 }}>Cancel</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
         <SafeAreaView style={styles.safearea}>
           <View>
             <Text style={styles.text}>{question.question}</Text>
