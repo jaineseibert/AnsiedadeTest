@@ -44,8 +44,15 @@ const styles = StyleSheet.create({
 
 class Resultado extends React.Component {
     state = {
-        score: this.props.navigation.getParam("score"),
-        mensagem: 'Foram detectados sintomas excessivos de ansiedade, sua saúde mental pode merecer um pouco de atenção!'
+        resposta1: this.props.navigation.getParam("resposta1"),
+        resposta2: this.props.navigation.getParam("resposta2"),
+        resposta3: this.props.navigation.getParam("resposta3"),
+        resposta4: this.props.navigation.getParam("resposta4"),
+        resposta5: this.props.navigation.getParam("resposta5"),
+        resposta6: this.props.navigation.getParam("resposta6"),
+        resposta7: this.props.navigation.getParam("resposta7"),
+        resposta8: this.props.navigation.getParam("resposta8"),
+        mensagem: 'Foram detectados sintomas excessivos de ansiedade. Sua saúde mental pode merecer um pouco de atenção. Que tal procurar a ajuda profissional de um psicólogo?'
     };
 
     render() {
@@ -57,7 +64,7 @@ class Resultado extends React.Component {
 
         if (this.state.score < 50) {
             circleStyles.push(styles.circleCorrect);
-            this.state.mensagem = 'Não foram detectados sintomas excessivos de ansiedade!';
+            this.state.mensagem = 'Não foram detectados sintomas excessivos de ansiedade. Sua saúde mental parece estar ótima!';
         }
 
         return (
