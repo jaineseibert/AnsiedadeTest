@@ -56,13 +56,13 @@ class Resultado extends React.Component {
     };
 
     render() {
-        const icon = (this.state.score < 30)
+        const icon = ((this.state.resposta4 + this.state.resposta8) < 10)
             ? require("../assets/check.png")
             : require("../assets/atencao.png");
 
         const circleStyles = [styles.circle];
 
-        if (this.state.score < 50) {
+        if ((this.state.resposta4 + this.state.resposta8) < 10) {
             circleStyles.push(styles.circleCorrect);
             this.state.mensagem = 'Não foram detectados sintomas excessivos de ansiedade. Sua saúde mental parece estar ótima!';
         }
