@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableOpacity, Text, StyleSheet, Image } from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet, Image, TouchableHighlight } from "react-native";
 
 const styles = StyleSheet.create({
   button: {
@@ -61,9 +61,9 @@ const styles = StyleSheet.create({
 });
 
 export const Button = ({ text, onPress = () => { } }) => (
-  <TouchableOpacity onPress={onPress} style={styles.button}>
+  <TouchableHighlight underlayColor="#0ec724" onPress={onPress} style={styles.button}>
     <Text style={styles.text}>{text}</Text>
-  </TouchableOpacity>
+  </TouchableHighlight>
 );
 
 export const ButtonContainer = ({ children }) => (

@@ -3,8 +3,9 @@ import { Alert, Image, TouchableOpacity, StyleSheet } from 'react-native'
 
 const AlertExample = () => {
   const showAlert = () => {
-    Alert.alert(
-      'Ajuda em construção.'
+    Alert.alert("Informações do sistema",
+      "Versão: 1.0.0 \n " +
+      "Criado por: Jaíne Seibert "
     )
   }
   return (

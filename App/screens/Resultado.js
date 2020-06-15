@@ -76,9 +76,9 @@ class Resultado extends React.Component {
                 <View style={styles.ButtonSection}>
                 <ButtonFim
                     key='1'
-                    text='Voltar ao início'
+                    text='Email'
                     onPress={() =>
-                        this.props.navigation.navigate("QuizIndex")
+                        this.props.navigation.navigate("EnviarEmail")
                     }
                 />
                 </View>

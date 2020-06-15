@@ -3,6 +3,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import QuizIndex from "./screens/QuizIndex";
 import Quiz from "./screens/Quiz";
 import Resultado from "./screens/Resultado";
+import EnviarEmail from "./screens/EnviarEmail";
 
 const MainStack = createStackNavigator({
   QuizIndex: {
@@ -29,7 +30,13 @@ const MainStack = createStackNavigator({
     navigationOptions: ({ navigation }) => ({
       score: navigation.getParam("score")
     })
-  }
+  },
+  EnviarEmail: {
+    screen: EnviarEmail,
+    navigationOptions: ({ navigation }) => ({
+    })
+  },
+     
 });
 
 export default createAppContainer(MainStack);

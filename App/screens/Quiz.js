@@ -115,7 +115,7 @@ class Quiz extends React.Component {
         return nextState;
       },
       () => {
-        setTimeout(() => this.nextQuestion(), 1500);
+        setTimeout(() => this.nextQuestion(), 2000);
       }
     );
   };
@@ -264,6 +264,7 @@ class Quiz extends React.Component {
           { backgroundColor: this.props.navigation.getParam("colorCorpo") }
         ]}
       >
+        <AlertExample/>
         <StatusBar barStyle="light-content" />
         <Modal animationIn="slideInUp" animationOut="slideOutDown" onBackdropPress={() => this.closeModal()}
           onSwipeComplete={() => this.closeModal()} swipeDirection="right" isVisible={this.state.isModalVisible || false}
@@ -275,10 +276,9 @@ class Quiz extends React.Component {
         <SafeAreaView style={styles.safearea}>
           <View>
             <Text style={styles.text}>{question.question}</Text>
-
             <ButtonContainer>
               {question.answers.map(answer => (
-                <Button
+                <Button  
                   key={answer.id}
                   text={answer.text}
                   onPress={() => this.answer(answer.id)}
