@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Dimensions, Image, Text } from "react-native";
 import { ButtonFim } from "../components/Button";
+import email from 'react-native-email'
 
 const screen = Dimensions.get("window");
 
@@ -76,14 +77,23 @@ class Resultado extends React.Component {
                 <View style={styles.ButtonSection}>
                 <ButtonFim
                     key='1'
-                    text='Email'
-                    onPress={() =>
-                        this.props.navigation.navigate("EnviarEmail")
-                    }
+                    text='Enviar resultado por e-mail'
+                    onPress={this.handleEmail}
                 />
                 </View>
             </View>
         );
+    }
+
+    handleEmail = () => {
+        const to = ['', ''] // string or array of email addresses
+        email(to, {
+            // Optional additional arguments
+            cc: ['', ''], // string or array of email addresses
+            bcc: '', // string or array of email addresses
+            subject: 'Resultado do teste de ansiedade do AnsiedadeTest',
+            body: this.state.mensagem 
+        }).catch(console.error)
     }
 }
 

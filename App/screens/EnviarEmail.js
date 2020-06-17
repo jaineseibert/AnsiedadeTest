@@ -3,6 +3,10 @@ import { StyleSheet, Button, View } from 'react-native'
 import email from 'react-native-email'
  
 export default class EnviarEmail extends React.Component {
+    state = {
+      resultado: this.props.navigation.getParam("resultado")  
+    };
+
     render() {
         return (
             <View style={styles.container}>

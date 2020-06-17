@@ -34,6 +34,7 @@ const MainStack = createStackNavigator({
   EnviarEmail: {
     screen: EnviarEmail,
     navigationOptions: ({ navigation }) => ({
+      resultado: navigation.getParam("resultado")
     })
   },
      
