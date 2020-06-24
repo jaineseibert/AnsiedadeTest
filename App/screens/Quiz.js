@@ -126,16 +126,16 @@ class Quiz extends React.Component {
 
       const nextIndex = state.activeQuestionIndex + 1;
 
-      if (nextIndex == 8) {
-        this.openModal("#1E90FF", "Você está indo bem, vamos continuar animados!")
+      if (state.totalCount <= 18) {
+        if (nextIndex == 18) {
+          this.openModal("#1E90FF", "Você está indo bem, vamos continuar!")
+        }
       }
 
-      if (nextIndex == 18) {
-        this.openModal("#F4A460", "Não desanime ainda, chegaremos ao final antes do que imagina!")
-      }
-
-      if (nextIndex == 24) {
-        this.openModal("#D8BFD8", "Não desista agora, estamos quase acabando!")
+      if (state.totalCount == 28) {
+        if (nextIndex == 16) {
+          this.openModal("#D8BFD8", "Não desista agora, estamos quase acabando!")
+        }
       }
 
       if (nextIndex >= state.totalCount) {

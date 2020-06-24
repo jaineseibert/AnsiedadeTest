@@ -15,7 +15,7 @@ const questions = [
     ]
   },
   {
-    question: "Com que frequência sente sensação de calor?",
+    question: "Com que frequência sente sensação de calor (não relacionado ao clima)?",
     answers: [
       { id: "1", text: "Não sinto" },
       { id: "2", text: "Muito pouco" },
