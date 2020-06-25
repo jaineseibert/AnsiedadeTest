@@ -1,7 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Dimensions, Image, Text } from "react-native";
 import { ButtonFim } from "../components/Button";
-import email from 'react-native-email'
+import email from 'react-native-email';
+import AlertExample from "../components/Alert";
 
 const screen = Dimensions.get("window");
 
@@ -93,6 +94,7 @@ class Resultado extends React.Component {
         }        
 
         return (
+            <AlertExample/>
             <View style={styles.container}>
                 <View style={circleStyles}>
                     <Image source={icon} style={styles.icon} resizeMode="contain" />

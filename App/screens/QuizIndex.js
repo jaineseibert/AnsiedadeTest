@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, StatusBar, Text, View, CheckBox } from "react-n
 import sintomasfisicos from "../data/sintomasfisicos";
 
 import { ButtonInicio } from "../components/Button";
+import AlertExample from "../components/Alert";
 
 const styles = StyleSheet.create({
   container: {
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
 export default ({ navigation }) => (
   <ScrollView>
     <StatusBar barStyle="dark-content" />
+    <AlertExample/>
     <View style={styles.TextSection}>
       <Text style={styles.text}>  A ansiedade é uma reação natural do ser humano e faz parte do nosso instinto de sobrevivência. 
       Todos os seres humanos possuem algum nível de ansiedade, é algo necessário. 
