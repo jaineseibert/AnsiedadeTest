@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center'
-      },
+    },
 });
 
 class Resultado extends React.Component {
@@ -59,13 +59,13 @@ class Resultado extends React.Component {
 
     render() {
         const somatoria = ((this.state.rresposta1 * 0) +
-                           (this.state.rresposta2 * 0) +
-                           (this.state.rresposta3 * 1) +
-                           (this.state.rresposta4 * 2) +
-                           (this.state.rresposta5 * 0) +
-                           (this.state.rresposta6 * 0) +
-                           (this.state.rresposta7 * 2) +
-                           (this.state.rresposta8 * 3));
+            (this.state.rresposta2 * 0) +
+            (this.state.rresposta3 * 1) +
+            (this.state.rresposta4 * 2) +
+            (this.state.rresposta5 * 0) +
+            (this.state.rresposta6 * 0) +
+            (this.state.rresposta7 * 2) +
+            (this.state.rresposta8 * 3));
 
         const icon = ((somatoria) == 0)
             ? require("../assets/check.png")
@@ -78,36 +78,41 @@ class Resultado extends React.Component {
             this.state.mensagem = 'Não foram detectados sintomas excessivos de ansiedade. Sua saúde mental parece estar ótima!';
         }
 
-        if  (somatoria > 0) {
+        if (somatoria > 0) {
             circleStyles.push(styles.circle);
             this.state.mensagem = 'Fique atento e observe, se houver um aumento dos sintomas, tanto físicos quanto psicológicos, procure auxílio de um profissional da Psicologia.';
         }
 
-        if  (somatoria > 10) {
+        if (somatoria > 10) {
             circleStyles.push(styles.circle);
             this.state.mensagem = 'Talvez seja importante que você procure o auxílio de um profissional da Psicologia para que ele possa, juntamente com você, avaliar estes sintomas que você está apresentando.';
         }
 
-        if  (somatoria > 30) {
+        if (somatoria > 30) {
             circleStyles.push(styles.circle);
             this.state.mensagem = ' Orientamos que procure o auxílio de um profissional, pois foram identificados sintomas significativos de ansiedade.';
-        }        
+        }
 
-        return (
-            <AlertExample/>
-            <View style={styles.container}>
+        return (      
+            <View>
+            <View><AlertExample /> 
+            </View>
+            <View style={styles.container}> 
+                        
                 <View style={circleStyles}>
                     <Image source={icon} style={styles.icon} resizeMode="contain" />
                 </View>
                 <Text style={styles.frase}>{this.state.mensagem}</Text>
                 <View style={styles.ButtonSection}>
-                <ButtonFim
-                    key='1'
-                    text='Enviar resultado por e-mail'
-                    onPress={this.handleEmail}
-                />
+                    <ButtonFim
+                        key='1'
+                        text='Enviar resultado por e-mail'
+                        onPress={this.handleEmail}
+                    />
                 </View>
+            
             </View>
+            </View>                    
         );
     }
 
@@ -118,7 +123,7 @@ class Resultado extends React.Component {
             cc: ['', ''], // string or array of email addresses
             bcc: '', // string or array of email addresses
             subject: 'Resultado do teste de ansiedade do AnsiedadeTest',
-            body: this.state.mensagem 
+            body: this.state.mensagem
         }).catch(console.error)
     }
 }

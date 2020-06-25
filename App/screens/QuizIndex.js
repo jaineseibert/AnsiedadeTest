@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 export default ({ navigation }) => (
   <ScrollView>
     <StatusBar barStyle="dark-content" />
-    <AlertExample/>
+    <View><AlertExample/></View>
     <View style={styles.TextSection}>
       <Text style={styles.text}>  A ansiedade é uma reação natural do ser humano e faz parte do nosso instinto de sobrevivência. 
       Todos os seres humanos possuem algum nível de ansiedade, é algo necessário. 
