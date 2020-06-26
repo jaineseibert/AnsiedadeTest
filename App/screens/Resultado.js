@@ -94,9 +94,6 @@ class Resultado extends React.Component {
         }
 
         return (      
-            <View>
-            <View><AlertExample /> 
-            </View>
             <View style={styles.container}> 
                         
                 <View style={circleStyles}>
@@ -111,8 +108,7 @@ class Resultado extends React.Component {
                     />
                 </View>
             
-            </View>
-            </View>                    
+            </View>                  
         );
     }
 
