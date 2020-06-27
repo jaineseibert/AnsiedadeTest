@@ -58,14 +58,14 @@ class Resultado extends React.Component {
     };
 
     render() {
-        const somatoria = ((this.state.rresposta1 * 0) +
-            (this.state.rresposta2 * 0) +
-            (this.state.rresposta3 * 1) +
-            (this.state.rresposta4 * 2) +
-            (this.state.rresposta5 * 0) +
-            (this.state.rresposta6 * 0) +
-            (this.state.rresposta7 * 2) +
-            (this.state.rresposta8 * 3));
+        const somatoria = ((this.state.resposta1 * 0) +
+            (this.state.resposta2 * 0) +
+            (this.state.resposta3 * 1) +
+            (this.state.resposta4 * 2) +
+            (this.state.resposta5 * 0) +
+            (this.state.resposta6 * 0) +
+            (this.state.resposta7 * 2) +
+            (this.state.resposta8 * 3));
 
         const icon = ((somatoria) == 0)
             ? require("../assets/check.png")
@@ -78,17 +78,17 @@ class Resultado extends React.Component {
             this.state.mensagem = 'Não foram detectados sintomas excessivos de ansiedade. Sua saúde mental parece estar ótima!';
         }
 
-        if (somatoria > 0) {
+        if (somatoria >= 1) {
             circleStyles.push(styles.circle);
             this.state.mensagem = 'Fique atento e observe, se houver um aumento dos sintomas, tanto físicos quanto psicológicos, procure auxílio de um profissional da Psicologia.';
         }
 
-        if (somatoria > 10) {
+        if (somatoria >= 10) {
             circleStyles.push(styles.circle);
             this.state.mensagem = 'Talvez seja importante que você procure o auxílio de um profissional da Psicologia para que ele possa, juntamente com você, avaliar estes sintomas que você está apresentando.';
         }
 
-        if (somatoria > 30) {
+        if (somatoria >= 30) {
             circleStyles.push(styles.circle);
             this.state.mensagem = ' Orientamos que procure o auxílio de um profissional, pois foram identificados sintomas significativos de ansiedade.';
         }
